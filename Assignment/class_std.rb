@@ -25,6 +25,7 @@ class Std
 end
 a=[]
 i=0
+
 while true
     puts"STUDENT CLASS\n\t1.Add new student\n\t2.Display all Students\n\t3.Display all students by branch\n\t4.Display students by state\n\t5.Search Students by roll number\n\t6.Search by part of the name\n\t7.Delete by Roll number\n\t8.Count and Display number of students by state\n\t9.Count and Display number of students by branch\n\t10.Exit"
     n=gets.chomp.to_i
