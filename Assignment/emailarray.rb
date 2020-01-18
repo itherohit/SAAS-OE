@@ -1,6 +1,6 @@
 a=[]
 while true
-	puts"STRING ARRAY\n\t1.Add Email\n\t2.Display all\n\t3.Display only email ids\n\t4.Search\n\t5.Delete mail id by value\n\t6.Display Unique domain of all mail ids\n\t7.Count mail ids in given domain\n\t8.Exit"
+	puts"STRING ARRAY\n\t1.Add Email\n\t2.Display all\n\t3.Display only edu email ids\n\t4.Search\n\t5.Delete mail id by value\n\t6.Display Unique domain of all mail ids\n\t7.Count mail ids in given domain\n\t8.Exit"
 	n=gets.chomp.to_i
 	if(n==8)
 		puts"Thank You"
@@ -8,15 +8,15 @@ while true
 	end
 	case n
 		when 1
-			puts"Enter the String"
+			puts"Enter the Email"
 			i=gets.chomp.to_s
 			a.push(i)
-			puts"String Added"
+			puts"Email Added"
 		when 2
 			puts a
 		when 3
 			for i in 0..(a.length()-1)
-				if a[i].include?('@')
+				if a[i].include?('@edu')
 					puts a[i]
 				else
 					next
