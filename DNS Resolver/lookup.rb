@@ -84,10 +84,16 @@ def resolve(dns_records, lookup_chain, domain)
         lookup_chain.push(recordCNAME[:destination][recordCNAME[:source].index(domain)])
         domain=recordCNAME[:destination][recordCNAME[:source].index(domain)]
         resolve(dns_records, lookup_chain, domain)
+    else 
+        return lookup_chain 
     end    
 end
     
 dns_records=parse_dns(dns_raw)
 lookup_chain = [domain]
 lookup_chain = resolve(dns_records, lookup_chain, domain)
-puts lookup_chain.join('=>')
+if lookup_chain.length()!=1
+    puts lookup_chain.join('=>')
+else    
+    puts "ERROR : NOT FOUND"
+end    
