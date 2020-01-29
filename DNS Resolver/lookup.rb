@@ -4,11 +4,12 @@ def get_command_line_argument
     # when invoking the script from the command line.
     # https://docs.ruby-lang.org/en/2.4.0/ARGF.html
     if ARGV.empty?
-      puts "Usage: ruby lookup.rb <domain>"
-      exit
+        puts "Usage: ruby lookup.rb <domain>"
+        exit
     end
     ARGV.first
 end
+
 # `domain` contains the domain name we have to look up.
 domain = get_command_line_argument
 
@@ -26,6 +27,7 @@ def parse_dns(dns_raw)
     record_type_A_IP=[]
     record_type_CNAME=[]
     record_type_CNAME_alias=[]
+
     #adds each line to dns array and splipt them with ","
     dns_raw.each do |lines_in_files|
         dns.push([lines_in_files.split(',')])     
@@ -44,14 +46,12 @@ def parse_dns(dns_raw)
 
     #record_A hash stores values of recordA
     record_A={
-        :type => "A",
         :source => record_type_A,
         :ip => record_type_A_IP
     }
 
     #recordCNAME hash stores values of recordCNAME
     record_CNAME={
-        :type => "CNAME",
         :source => record_type_CNAME,
         :alias => record_type_CNAME_alias 
     }
@@ -62,7 +62,7 @@ def parse_dns(dns_raw)
         :CNAME => record_CNAME
     }
     
-    #returns record dns_record with two hashes
+    #returns record dns_record with two hashes.
     return dns_records
 end
 
@@ -70,10 +70,12 @@ end
 def resolve(dns_records, lookup_chain, domain)
     record_A=dns_records[:A]
     record_CNAME=dns_records[:CNAME]
+
     #if domain in recordA
     #add destination to lookup_chain
     if record_A[:source].include?(domain)
         lookup_chain.push(record_A[:ip][record_A[:source].index(domain)])
+
     #if domain in recordCNAME
     #add destination to lookup_chain
     #update domain with destination
