@@ -2,11 +2,6 @@ require "date"
 
 class Todo
   def initialize(text, due_date, completed)
-    if completed
-      @status = "[X]"
-    else
-      @status = "[ ]"
-    end
     @text = text
     @due_date = due_date
     @completed = completed
@@ -25,10 +20,11 @@ class Todo
   end
 
   def to_displayable_string
+    status = @completed ? "[x]" : "[ ]"
     if @due_date == Date.today
-      "#@status #@text"
+      "#{status} #@text"
     else
-      "#@status #@text #@due_date"
+      "#{status} #@text #@due_date"
     end
   end
 end
