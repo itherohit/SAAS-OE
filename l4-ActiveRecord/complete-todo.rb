@@ -9,4 +9,4 @@ todo_id = gets.strip.to_i
 
 todo = Todo.mark_as_complete!(todo_id)
 
-puts todo.show_list
+puts todo.to_displayable_string
